@@ -448,9 +448,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpSpeed: 6
-  gravity: 16
+  jumpSpeed: 5
+  gravity: 12
   lowJumpMultiplier: 1.25
+  slideDuration: 1.25
+  slideSpeedMultiplier: 6
+  slideCooldown: 1
 --- !u!23 &1196695945
 MeshRenderer:
   m_ObjectHideFlags: 0

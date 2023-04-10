@@ -3,69 +3,115 @@ using UnityEngine;
 
 public class CharacterControllerSC : MonoBehaviour
 {
-    public float moveSpeed = 6.0f;      // Movement speed of the character
-   
-    public float jumpSpeed = 8.0f;      // Jump height of the character
-   
-    public float gravity = 20.0f;       // Gravity force
-  
-    public float lowJumpMultiplier = 2.0f;   // Multiplier for low jumps
+    [Header("Movement Settings")]
+    [SerializeField, Tooltip("Movement speed of the character")]
+    private float moveSpeed = 6.0f;
 
-    private bool isJumping = false;      // Flag to track if the character is jumping
-   
-    private float currentJumpSpeed;      // Variable to store the current jump speed of the character
-  
-    private float verticalVelocity;      // Vertical velocity of the character
+    [SerializeField, Tooltip("Jump height of the character")]
+    private float jumpSpeed = 8.0f;
 
-    private CharacterController controller;      // Reference to the character controller component
+    [SerializeField, Tooltip("Gravity force")]
+    private float gravity = 20.0f;
 
-    void Start () 
+    [SerializeField, Tooltip("Multiplier for low jumps")]
+    private float lowJumpMultiplier = 1.2f;
+
+    [Header("Slide Settings")]
+    [SerializeField, Tooltip("Duration of the slide in seconds")]
+    private float slideDuration = 1f;
+
+    [SerializeField, Tooltip("Multiplier for the slide speed")]
+    private float slideSpeedMultiplier = 2f;
+
+    [SerializeField, Tooltip("Cooldown time for the slide in seconds")]
+    private float slideCooldown = 1f;
+
+    private bool isJumping = false;
+    private float currentJumpSpeed;
+    private float verticalVelocity;
+    private CharacterController controller;
+
+    private bool isSliding = false;
+    private float slideTimer = 0f;
+    private float slideCooldownTimer = 0f;
+    private Vector2 defaultColliderSize;
+    private Vector3 slideDirection;
+
+    void Start()
     {
-        controller = GetComponent<CharacterController>();      // Get the character controller component on Start()
+        controller = GetComponent<CharacterController>();
+        defaultColliderSize = controller.bounds.size;
     }
 
-    void Update () 
+    void Update()
     {
-        if (controller.isGrounded) 
-        {   
-            // If the character is on the ground
-            verticalVelocity = 0;   // Reset the vertical velocity
-            if (Input.GetButtonDown("Jump")) 
-            {   // If the jump button is pressed
-                isJumping = true;   // Set the jumping flag
-                currentJumpSpeed = jumpSpeed;   // Set the current jump speed
+        if (controller.isGrounded)
+        {
+            verticalVelocity = 0;
+            if (Input.GetButtonDown("Jump"))
+            {
+                isJumping = true;
+                currentJumpSpeed = jumpSpeed;
             }
-        } 
-       
-        else 
-        {   // If the character is in the air
-            if (Input.GetButtonUp("Jump")) 
-            {   
-                // If the jump button is released
-                isJumping = false;   // Reset the jumping flag
-               
-                if (verticalVelocity > 0) 
-                {   // If the character is moving upwards
-                    verticalVelocity = verticalVelocity / lowJumpMultiplier;   // Apply low jump multiplier
+        }
+        else
+        {
+            if (Input.GetButtonUp("Jump"))
+            {
+                isJumping = false;
+
+                if (verticalVelocity > 0)
+                {
+                    verticalVelocity = verticalVelocity / lowJumpMultiplier;
                 }
             }
         }
-        
-        if (isJumping) 
-        {   // If the character is jumping
-            verticalVelocity = currentJumpSpeed;   // Set the vertical velocity to the current jump speed
-            currentJumpSpeed -= gravity * Time.deltaTime;   // Decrease the current jump speed based on gravity
-            if (currentJumpSpeed < 0) 
-            {   // If the character is falling
-                isJumping = false;   // Reset the jumping flag
+
+        if (isJumping)
+        {
+            verticalVelocity = currentJumpSpeed;
+            currentJumpSpeed -= gravity * Time.deltaTime;
+            if (currentJumpSpeed < 0)
+            {
+                isJumping = false;
             }
-        } 
-        
-        else 
-        {   // If the character is not jumping
-            verticalVelocity -= gravity * Time.deltaTime;   // Apply gravity to the vertical velocity
+        }
+        else
+        {
+            verticalVelocity -= gravity * Time.deltaTime;
+        }
+
+        controller.Move(new Vector3(Input.GetAxis("Horizontal"), verticalVelocity, 0) * moveSpeed * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.LeftControl) && !isSliding && slideCooldownTimer <= 0f)
+        {
+            isSliding = true;
+            slideTimer = slideDuration;
+            controller.height /= 2f;
+            controller.center = new Vector3(controller.center.x, controller.center.y / 2f, controller.center.z);
+            slideDirection = transform.right * Mathf.Sign(Input.GetAxisRaw("Horizontal"));
         }
         
-        controller.Move(new Vector3(Input.GetAxis("Horizontal"), verticalVelocity, 0) * moveSpeed * Time.deltaTime);   // Move the character
+        if (isSliding)
+        {
+            slideTimer -= Time.deltaTime;
+
+            float slideProgress = 1f - slideTimer / slideDuration;
+            float slideSpeed = Mathf.Lerp(slideSpeedMultiplier, 0f, slideProgress); 
+            controller.Move(slideDirection * slideSpeed * Time.deltaTime); 
+
+            if (slideTimer <= 0f)
+            {
+                isSliding = false;
+                slideCooldownTimer = slideCooldown;
+                controller.height *= 2f;
+                controller.center = new Vector3(controller.center.x, controller.center.y * 2f, controller.center.z);
+            }
+        }
+
+        if (slideCooldownTimer > 0f)
+        {
+            slideCooldownTimer -= Time.deltaTime;
+        }
     }
 }

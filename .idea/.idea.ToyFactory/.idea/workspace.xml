@@ -1,53 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e04166d-bec9-4ef5-a62a-742ea223bcfe" name="Changes" comment="" />
+    <list default="true" id="3b3cdb5a-774b-4fe0-a786-b3e74cc40eae" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/CharacterControllerSC.cs" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2OBO4gWKQs7XBauud4CPX8l7nPN" />
+  <component name="ProjectId" id="2OD4NvOzz9UTRwVDzJJHzKxQm70" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\emrek\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\emrek\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\emrek\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\emrek\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\emrek\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\emrek\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.19f1\Editor\Unity.exe" />
-      <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;C:\Users\emrek\OneDrive\Masaüstü\DungeonDefender\Toy Factory&quot; -debugCodeOptimization" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\emrek\OneDrive\Masaüstü\DungeonDefender\Toy Factory" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\emrek\OneDrive\Masaüstü\ToyFactory -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\emrek\OneDrive\Masaüstü\ToyFactory" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.19f1\Editor\Unity.exe" />
-      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;C:\Users\emrek\OneDrive\Masaüstü\DungeonDefender\Toy Factory&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\emrek\OneDrive\Masaüstü\DungeonDefender\Toy Factory" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\emrek\OneDrive\Masaüstü\ToyFactory -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\emrek\OneDrive\Masaüstü\ToyFactory" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
@@ -76,13 +73,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0e04166d-bec9-4ef5-a62a-742ea223bcfe" name="Changes" comment="" />
-      <created>1681030320090</created>
+      <changelist id="3b3cdb5a-774b-4fe0-a786-b3e74cc40eae" name="Changes" comment="" />
+      <created>1681081783053</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1681030320090</updated>
-      <workItem from="1681030323511" duration="6071000" />
-      <workItem from="1681084498640" duration="599000" />
+      <updated>1681081783053</updated>
+      <workItem from="1681081785119" duration="2546000" />
     </task>
     <servers />
   </component>
