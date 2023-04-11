@@ -1,7 +1,8 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class CharacterControllerSC : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField, Tooltip("Movement speed of the character")]
@@ -36,10 +37,12 @@ public class CharacterControllerSC : MonoBehaviour
     private float slideCooldownTimer = 0f;
     private Vector2 defaultColliderSize;
     private Vector3 slideDirection;
+    private float horizontalInput;
+    private bool isFacingRight = true;
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>(); 
         defaultColliderSize = controller.bounds.size;
     }
 
@@ -81,15 +84,29 @@ public class CharacterControllerSC : MonoBehaviour
             verticalVelocity -= gravity * Time.deltaTime;
         }
 
-        controller.Move(new Vector3(Input.GetAxis("Horizontal"), verticalVelocity, 0) * moveSpeed * Time.deltaTime);
+        if (!isSliding)
+        {
+            horizontalInput = Input.GetAxis("Horizontal");
+        }
+
+        if (horizontalInput < 0 && isFacingRight)
+        {
+            Flip();
+        }
+        else if (horizontalInput > 0 && !isFacingRight)
+        {
+            Flip();
+        }
+        
+        controller.Move(new Vector3(horizontalInput, verticalVelocity, 0) * moveSpeed * Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.LeftControl) && !isSliding && slideCooldownTimer <= 0f)
         {
             isSliding = true;
             slideTimer = slideDuration;
             controller.height /= 2f;
-            controller.center = new Vector3(controller.center.x, controller.center.y / 2f, controller.center.z);
-            slideDirection = transform.right * Mathf.Sign(Input.GetAxisRaw("Horizontal"));
+            controller.center = new Vector3(controller.center.x, controller.center.y / 2f, 0);
+            slideDirection = transform.forward;
         }
         
         if (isSliding)
@@ -105,7 +122,7 @@ public class CharacterControllerSC : MonoBehaviour
                 isSliding = false;
                 slideCooldownTimer = slideCooldown;
                 controller.height *= 2f;
-                controller.center = new Vector3(controller.center.x, controller.center.y * 2f, controller.center.z);
+                controller.center = new Vector3(controller.center.x, controller.center.y * 2f,0);
             }
         }
 
@@ -113,5 +130,11 @@ public class CharacterControllerSC : MonoBehaviour
         {
             slideCooldownTimer -= Time.deltaTime;
         }
+    }
+    
+    void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        transform.Rotate(0f, 180f, 0f);
     }
 }

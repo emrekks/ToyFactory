@@ -2,21 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour 
+public class CameraController : MonoBehaviour
 {
-    public Transform target;      // Reference to the target transform
+    public Transform target;
+    public float smoothTime = 0.3f;
+    public float xOffset = 0f;
+    public float yOffset = 0f;
+    public float zOffset = -10f;
 
-    public float distance;
-    
-    public float smoothTime = 0.3f;      // Smooth time for camera movement
-   
-    public float yOffset = 2.0f;      // Y offset for camera position
+    private Vector3 velocity = Vector3.zero;
 
-    private Vector3 velocity = Vector3.zero;      // Velocity for camera movement
-
-    void LateUpdate () 
+    void LateUpdate()
     {
-        Vector3 targetPosition = target.TransformPoint(new Vector3(0, yOffset, distance));      // Get the target position with an offset
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);      // Smoothly move the camera to the target position
+        Vector3 targetPosition = new Vector3(target.position.x + xOffset, target.position.y + yOffset, zOffset);
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
     }
 }
