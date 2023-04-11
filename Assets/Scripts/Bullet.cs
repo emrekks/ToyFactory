@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -14,7 +13,12 @@ public class Bullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
-    
+
+    private void OnEnable()
+    {
+        damage = WeaponManager.CurrentGunData.damage;
+    }
+
     void Update()
     {
         transform.position += transform.forward * speed * Time.deltaTime;
