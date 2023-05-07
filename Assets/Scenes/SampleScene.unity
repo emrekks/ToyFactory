@@ -2654,6 +2654,7 @@ MonoBehaviour:
   target: {fileID: 1352412457}
   smoothTime: 0.3
   xOffset: 0
+<<<<<<< HEAD
   yOffset: 4.5
   zOffset: -25
 --- !u!1 &991741150 stripped
@@ -2748,6 +2749,10 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 84a256f52ea5e724db86b770880e7a4a, type: 3}
   m_PrefabInstance: {fileID: 1111952760}
   m_PrefabAsset: {fileID: 0}
+=======
+  yOffset: 2.5
+  zOffset: -12
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
 --- !u!1 &1160987696
 GameObject:
   m_ObjectHideFlags: 0
@@ -3680,10 +3685,16 @@ MonoBehaviour:
   jumpSpeed: 2.4
   gravity: 7.5
   lowJumpMultiplier: 1.2
+<<<<<<< HEAD
   climbSpeed: 1.2
   slideDuration: 0.7
   slideSpeedMultiplier: 8
   slideCooldown: 1.25
+=======
+  slideDuration: 1
+  slideSpeedMultiplier: 12
+  slideCooldown: 2.5
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
 --- !u!143 &1352412453
 CharacterController:
   m_ObjectHideFlags: 0
