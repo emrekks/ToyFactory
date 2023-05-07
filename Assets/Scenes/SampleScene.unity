@@ -1345,6 +1345,7 @@ MonoBehaviour:
   smoothTime: 0.3
   xOffset: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   yOffset: 4.5
   zOffset: -18
 --- !u!1 &991741150 stripped
@@ -1449,6 +1450,10 @@ Transform:
 >>>>>>> parent of 486ee9e (LVD - Asset)
 =======
 >>>>>>> parent of 486ee9e (LVD - Asset)
+=======
+  yOffset: 2.5
+  zOffset: -12
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
 --- !u!1 &1160987696
 GameObject:
   m_ObjectHideFlags: 0
@@ -2063,11 +2068,14 @@ MonoBehaviour:
   gravity: 10.03
   lowJumpMultiplier: 1.2
 <<<<<<< HEAD
+<<<<<<< HEAD
   climbSpeed: 1.2
   slideDuration: 0.7
   slideSpeedMultiplier: 8
   slideCooldown: 1.25
 =======
+=======
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
   slideDuration: 1
   slideSpeedMultiplier: 12
   slideCooldown: 2.5

@@ -1,11 +1,22 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 =======
 using System.Collections;
 >>>>>>> parent of ef2ec1c (Update)
+=======
+using System.Collections;
+>>>>>>> parent of ef2ec1c (Update)
+=======
+using System;
+using Unity.VisualScripting;
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD
     [Header("Movement Settings")]
     [SerializeField, Tooltip("Movement speed of the character")]
@@ -40,12 +51,38 @@ public class PlayerMovement : MonoBehaviour
     private float climbSpeed = 2f;
 
 >>>>>>> parent of ef2ec1c (Update)
+=======
+    [Header("Movement Settings")] [SerializeField]
+    private float moveSpeed = 6f;
+=======
+    [Header("Movement Settings")]
+    [SerializeField, Tooltip("Movement speed of the character")]
+    private float moveSpeed = 6.0f;
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
+
+    [SerializeField, Tooltip("Jump height of the character")]
+    private float jumpSpeed = 8.0f;
+
+    [SerializeField, Tooltip("Gravity force")]
+    private float gravity = 20.0f;
+
+<<<<<<< HEAD
+>>>>>>> parent of ef2ec1c (Update)
     [Header("Slide Settings")] [SerializeField]
+=======
+    [SerializeField, Tooltip("Multiplier for low jumps")]
+    private float lowJumpMultiplier = 1.2f;
+
+    [Header("Slide Settings")]
+    [SerializeField, Tooltip("Duration of the slide in seconds")]
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
     private float slideDuration = 1f;
 
-    [SerializeField] private float slideSpeedMultiplier = 2f;
-    [SerializeField] private float slideCooldown = 1f;
+    [SerializeField, Tooltip("Multiplier for the slide speed")]
+    private float slideSpeedMultiplier = 2f;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD
     [SerializeField, Tooltip("Cooldown time for the slide in seconds")]
     private float slideCooldown = 1f;
@@ -63,31 +100,54 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 slideDirection;
 =======
 >>>>>>> parent of ef2ec1c (Update)
+=======
+    private CharacterController controller;
+    private Vector2 defaultColliderSize;
+>>>>>>> parent of ef2ec1c (Update)
     private float verticalVelocity;
+=======
+    [SerializeField, Tooltip("Cooldown time for the slide in seconds")]
+    private float slideCooldown = 1f;
+
+    private bool isJumping = false;
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
     private float currentJumpSpeed;
-    private float slideTimer;
-    private float slideCooldownTimer;
-    private float horizontalInput;
+    private float verticalVelocity;
+    private CharacterController controller;
+
+    private bool isSliding = false;
+    private float slideTimer = 0f;
+    private float slideCooldownTimer = 0f;
+    private Vector2 defaultColliderSize;
     private Vector3 slideDirection;
-    private bool isJumping;
-    private bool isSliding;
+    private float horizontalInput;
     private bool isFacingRight = true;
-    private bool isClimbing;
 
     void Start()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         controller = GetComponent<CharacterController>(); 
 =======
 >>>>>>> parent of ef2ec1c (Update)
+=======
+>>>>>>> parent of ef2ec1c (Update)
         controller = GetComponent<CharacterController>();
+=======
+        controller = GetComponent<CharacterController>(); 
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
         defaultColliderSize = controller.bounds.size;
     }
 
     void Update()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         if (controller.isGrounded)
+=======
+>>>>>>> parent of ef2ec1c (Update)
 =======
 >>>>>>> parent of ef2ec1c (Update)
         HandleMovement();
@@ -96,10 +156,14 @@ public class PlayerMovement : MonoBehaviour
         HandleClimbing();
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     void HandleMovement()
     {
         if (!isSliding)
+=======
+        if (controller.isGrounded)
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
         {
             verticalVelocity = 0;
             if (Input.GetButtonDown("Jump"))
@@ -107,6 +171,7 @@ public class PlayerMovement : MonoBehaviour
                 isJumping = true;
                 currentJumpSpeed = jumpSpeed;
             }
+<<<<<<< HEAD
             horizontalInput = Input.GetAxis("Horizontal");
         }
         else
@@ -150,13 +215,30 @@ public class PlayerMovement : MonoBehaviour
         {
             isJumping = true;
             currentJumpSpeed = jumpSpeed;
+=======
+        }
+        else
+        {
+            if (Input.GetButtonUp("Jump"))
+            {
+                isJumping = false;
+
+                if (verticalVelocity > 0)
+                {
+                    verticalVelocity = verticalVelocity / lowJumpMultiplier;
+                }
+            }
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
         }
 
         if (isJumping)
         {
             verticalVelocity = currentJumpSpeed;
             currentJumpSpeed -= gravity * Time.deltaTime;
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
             if (currentJumpSpeed < 0)
             {
                 isJumping = false;
@@ -166,11 +248,14 @@ public class PlayerMovement : MonoBehaviour
         {
             verticalVelocity -= gravity * Time.deltaTime;
         }
+<<<<<<< HEAD
 =======
 >>>>>>> parent of ef2ec1c (Update)
+=======
+>>>>>>> parent of ef2ec1c (Update)
+=======
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
 
-    void HandleMovement()
-    {
         if (!isSliding)
         {
             horizontalInput = Input.GetAxis("Horizontal");
@@ -185,15 +270,23 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         
         controller.Move(new Vector3(horizontalInput, verticalVelocity, 0) * moveSpeed * Time.deltaTime);
     }
 
 =======
 
-        controller.Move(new Vector3(horizontalInput, verticalVelocity, 0) * moveSpeed * Time.deltaTime);
-    }
+=======
 
+>>>>>>> parent of ef2ec1c (Update)
+=======
+        
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
+        controller.Move(new Vector3(horizontalInput, verticalVelocity, 0) * moveSpeed * Time.deltaTime);
+
+<<<<<<< HEAD
     void HandleJumping()
     {
         if (!controller.isGrounded)
@@ -236,9 +329,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
+>>>>>>> parent of ef2ec1c (Update)
+=======
 >>>>>>> parent of ef2ec1c (Update)
     void HandleSliding()
     {
+=======
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
         if (Input.GetKeyDown(KeyCode.LeftControl) && !isSliding && slideCooldownTimer <= 0f)
         {
             isSliding = true;
@@ -246,23 +344,39 @@ public class PlayerMovement : MonoBehaviour
             slideDirection = transform.forward;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         
 =======
 >>>>>>> parent of ef2ec1c (Update)
+=======
+>>>>>>> parent of ef2ec1c (Update)
 
+=======
+        
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
         if (isSliding)
         {
             slideTimer -= Time.deltaTime;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD
             float slideProgress = 1f - slideTimer / slideDuration;
             float slideSpeed = Mathf.Lerp(slideSpeedMultiplier, 0f, slideProgress); 
             controller.Move(slideDirection * slideSpeed * Time.deltaTime); 
 =======
 >>>>>>> parent of ef2ec1c (Update)
+=======
+>>>>>>> parent of ef2ec1c (Update)
             var slideProgress = 1f - slideTimer / slideDuration;
             var slideSpeed = Mathf.Lerp(slideSpeedMultiplier, 0f, slideProgress);
             controller.Move(slideDirection * slideSpeed * Time.deltaTime);
+=======
+            float slideProgress = 1f - slideTimer / slideDuration;
+            float slideSpeed = Mathf.Lerp(slideSpeedMultiplier, 0f, slideProgress); 
+            controller.Move(slideDirection * slideSpeed * Time.deltaTime); 
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
 
             if (slideTimer <= 0f)
             {
@@ -270,10 +384,17 @@ public class PlayerMovement : MonoBehaviour
                 slideCooldownTimer = slideCooldown;
                 controller.height *= 2f;
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
                 controller.center = new Vector3(controller.center.x, controller.center.y * 2f,0);
 =======
 >>>>>>> parent of ef2ec1c (Update)
+=======
+>>>>>>> parent of ef2ec1c (Update)
                 controller.center = new Vector3(controller.center.x, controller.center.y * 2f, 0);
+=======
+                controller.center = new Vector3(controller.center.x, controller.center.y * 2f,0);
+>>>>>>> parent of 42211ae (Adding Climbing 90Degrees Wall)
             }
         }
         slideCooldownTimer -= Time.deltaTime;
